@@ -10,8 +10,14 @@ import calendar
 def getDaysBefore(date, dds):
     import datetime
     datetime_dt = str_to_datetime(date)
+    move_day = abs(dds)
     time_delta = datetime.timedelta(days = dds) 
-    new_dt = datetime_dt - time_delta 
+    if dds > 0:
+        new_dt = datetime_dt + time_delta
+    else:
+        new_dt = datetime_dt - time_delta 
+        
+        
     datetime_format = new_dt.strftime("%Y%m%d") 
     return datetime_format
 
