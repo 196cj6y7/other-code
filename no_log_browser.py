@@ -13,7 +13,7 @@ browser = webdriver.Firefox(options=opts,service_log_path=os.devnull)
 # service_log_path = os.devnull makes no geckodriver.log file
 
 url = 'https://www.google.com.tw/'
-brwoser.get(url)
+browser.get(url)
 time.sleep(3)
 
 browser.quit()
