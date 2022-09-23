@@ -1,3 +1,18 @@
+def printPM(_size, _input_date, _table):
+    rank = 1
+    for i in range(1,_size,1): 
+        ss = '//*[@id="PMTab1"]/table/tbody/tr['+str(i)+']/td[1]'
+        tt = '//*[@id="PMTab1"]/table/tbody/tr['+str(i)+']/td[3]'
+        pmd = _table.find_element(By.XPATH, ss)
+        if pmd.text == _input_date:
+            pm = _table.find_element(By.XPATH, tt)
+            print(str(rank)+'\t'+pmd.text+'\t'+pm.text)
+            rank += 1
+
+    
+
+
+
 from selenium import webdriver
 import time
 import datetime
@@ -33,6 +48,10 @@ driver.find_element(By.XPATH, '//*[@id="PWD"]').send_keys(pwd)
 time.sleep(2)
 driver.find_element(By.XPATH, '//*[@id="submit_btn"]').click()
 time.sleep(2)
+#==========================================================================
+
+
+
 
 table = driver.find_element(By.ID, 'PMTab1')
 trlist = table.find_elements(By.TAG_NAME, 'tr')
@@ -44,7 +63,13 @@ for i in trlist:
     if date.text == input_date:
         pmNumber = pmNumber + 1
 time.sleep(2)
-print_pm = True
+
+
+
+printPM(size, input_date, table)
+
+
+
 i = 1
 while i < size:
     xpathText = '/*[@id="PMTab1"]/table/tbody/tr['+ str(i) +']/td[1]'

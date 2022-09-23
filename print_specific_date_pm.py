@@ -1,3 +1,14 @@
+def printPM(_size, _input_date, _table):
+    rank = 1
+    for i in range(1,_size,1): 
+        ss = '//*[@id="PMTab1"]/table/tbody/tr['+str(i)+']/td[1]'
+        tt = '//*[@id="PMTab1"]/table/tbody/tr['+str(i)+']/td[3]'
+        pmd = _table.find_element(By.XPATH, ss)
+        if pmd.text == _input_date:
+            pm = _table.find_element(By.XPATH, tt)
+            print(str(rank)+'\t'+pmd.text+'\t'+pm.text)
+            rank += 1
+
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
@@ -31,13 +42,7 @@ for i in trlist:
         pmNumber = pmNumber + 1
         
  
-for i in range(1,size,1): 
-    ss = '//*[@id="PMTab1"]/table/tbody/tr['+str(i)+']/td[1]'
-    tt = '//*[@id="PMTab1"]/table/tbody/tr['+str(i)+']/td[3]'
-    pmd = table.find_element(By.XPATH, ss)
-    if pmd.text == input_date:
-        pm = table.find_element(By.XPATH, tt)
-        print(str(i)+'\t'+pmd.text+'\t'+pm.text)
+printPM(size, input_date, table)
 
     
 
