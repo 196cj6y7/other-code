@@ -50,7 +50,7 @@ def LoopToPrintPM(_size, _table ,_input_date):
             #-----------------------
             time.sleep(4)
             pyautogui.press('enter')
-            #time.sleep(3)
+            time.sleep(2)
             pyautogui.hotkey('ctrl' ,'w')
             time.sleep(2)
             #-------------------
